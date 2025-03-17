@@ -1,0 +1,16 @@
+# /!\ NOTICE /!\
+
+# Many of the developers DO NOT USE the Dockerfile or image.
+# While we do test new changes to Docker configuration, it's
+# possible that future changes to the repo might break it.
+# When changing this file, please try to make it as resiliant
+# to such changes as possible; developers shouldn't need to
+# worry about Docker unless the build/run process changes.
+
+# Build stage
+FROM node:23.9-alpine AS build
+
+# Install build dependencies
+RUN apk add --no-cache git python3 make g++ \
+    && ln -sf /usr/bin/python3 /usr/bin/python
+

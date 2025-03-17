@@ -1,0 +1,18 @@
+---
+version: "3.8"
+services:
+  puter:
+    container_name: puter
+    image: puter/test:latest
+    # build: ./
+    restart: unless-stopped
+    ports:
+      - '4100:4100'
+    environment:
+      # TZ: Europe/Paris
+      # CONFIG_PATH: /etc/puter
+      PUID: 1000
+      PGID: 1000
+    volumes:
+      - ${HOME}/puter:/puter
+    command : tail -f /dev/null
